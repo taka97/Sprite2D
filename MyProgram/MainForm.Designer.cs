@@ -37,21 +37,28 @@
             this.spriteControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.spriteControl.Location = new System.Drawing.Point(0, 0);
             this.spriteControl.Name = "spriteControl";
-            this.spriteControl.Size = new System.Drawing.Size(800, 450);
+            this.spriteControl.Size = new System.Drawing.Size(852, 478);
             this.spriteControl.TabIndex = 0;
             this.spriteControl.KeyDown += new System.Windows.Forms.KeyEventHandler(this.spriteControl_KeyDown);
             this.spriteControl.KeyUp += new System.Windows.Forms.KeyEventHandler(this.spriteControl_KeyUp);
+            this.spriteControl.MouseDown += new System.Windows.Forms.MouseEventHandler(this.spriteControl_MouseDown);
+            this.spriteControl.MouseMove += new System.Windows.Forms.MouseEventHandler(this.spriteControl_MouseMove);
+            this.spriteControl.MouseUp += new System.Windows.Forms.MouseEventHandler(this.spriteControl_MouseUp);
             this.spriteControl.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.spriteControl_PreviewKeyDown);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(852, 478);
             this.Controls.Add(this.spriteControl);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "MainForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.WindowsDefaultBounds;
             this.Text = "MainForm";
+            this.TopMost = true;
+            this.TransparencyKey = System.Drawing.Color.Transparent;
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MainForm_KeyDown);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.MainForm_KeyUp);
             this.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.MainForm_PreviewKeyDown);

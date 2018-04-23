@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace MyProgram
@@ -29,6 +23,8 @@ namespace MyProgram
             tmrTick.Enabled = true;
         }
 
+        private Boolean isChange = false;
+
         private void tmrTick_Tick(object sender, EventArgs e)
         {
             Graphics g = CreateGraphics();
@@ -48,6 +44,7 @@ namespace MyProgram
         public void SpriteControl_KeyDown(Keys e)
         {
             if (stateGame == StateGame.Idle)
+            {
                 switch (e)
                 {
                     case Keys.Up:       // Up Arrow
@@ -69,28 +66,42 @@ namespace MyProgram
                     default:
                         break;
                 }
-            else  //state game = Pause
-                switch(e)
-                {
-                    case Keys.P:        // P: Pause
-                        Pause();
-                        break;
-                    case Keys.S:        // S: Resume
-                        Resume();
-                        break;
-                    case Keys.Oemplus:  // +: Increase Speed
-                        IncSpeed();
-                        break;
-                    case Keys.OemMinus: // -: Decrease Speed
-                        DecSpeed();
-                        break;
-
-                    case Keys.Escape:   // Esc
-                        Application.Exit();
-                        break;
-                    default:
-                        break;
-                }
+            }
+            switch (e)
+            {
+                case Keys.P:        // P: Pause
+                    Pause();
+                    break;
+                case Keys.S:        // S: Resume
+                    Resume();
+                    break;
+                case Keys.B:
+                    if (!isChange)
+                    {
+                        AutoChangeCharacter();
+                        isChange = true;
+                    }
+                    else
+                        isChange = false;
+                    break;
+                case Keys.Oemplus:  // +: Increase Speed
+                    IncSpeed();
+                    break;
+                case Keys.OemMinus: // -: Decrease Speed
+                    DecSpeed();
+                    break;
+                case Keys.Oem4:     // [: Zoom out
+                    ZoomOut();
+                    break;
+                case Keys.Oem6:     // ]: Zoom in
+                    ZoomIn();
+                    break;
+                case Keys.Escape:   // Esc
+                    Application.Exit();
+                    break;
+                default:
+                    break;
+            }
         }
 
         private void cmnuRightClickChangePlayerBomb_Click(object sender, EventArgs e)
@@ -106,6 +117,16 @@ namespace MyProgram
         private void cmnuRightClickChangePlayerGirl_Click(object sender, EventArgs e)
         {
             player.setPlayer(Player.Girl);
+        }
+
+        private void cmnuRightClickChangePlayerMan_Click(object sender, EventArgs e)
+        {
+            player.setPlayer(Player.Man);
+        }
+
+        private void cmnuRightClickChangePlayerRockman_Click(object sender, EventArgs e)
+        {
+            player.setPlayer(Player.Rockman);
         }
 
         private void cmnuRightClickExit_Click(object sender, EventArgs e)
@@ -135,12 +156,16 @@ namespace MyProgram
 
         private void cmnuRightClickZoomIn_Click(object sender, EventArgs e)
         {
-            ZoomOut();
+            isChange = false;
+            ZoomIn();
+            isChange = false;
         }
 
         private void cmnuRightClickZoomOut_Click(object sender, EventArgs e)
         {
+            isChange = false;
             ZoomOut();
+            isChange = false;
         }
 
         private void Pause()
@@ -165,14 +190,61 @@ namespace MyProgram
 
         private void ZoomIn()
         {
-            if (player.CurScale > 0 && player.CurScale < Sprite2D.maxScale)
-                player.CurScale++;
+            if (!isChange)
+            {
+                if (player.CurScale > 0 && player.CurScale < Sprite2D.maxScale)
+                    player.CurScale++;
+                isChange = true;
+            }
+            else
+                isChange = false;
         }
 
         private void ZoomOut()
         {
-            if (player.CurScale > 1 && player.CurScale < Sprite2D.maxScale)
-                player.CurScale--;
+            if (!isChange)
+            {
+                if (player.CurScale > 1 && player.CurScale <= Sprite2D.maxScale)
+                    player.CurScale--;
+                isChange = true;
+            }
+            else
+                isChange = false;
+        }
+
+        private void ChangeCharacter(int code)
+        {
+            player.setPlayer((Player)code);
+        }
+
+        private void AutoChangeCharacter()
+        {
+            int count = Enum.GetNames(typeof(Player)).Length;
+            int newPlayer = ((int)player.TypePlayer + 1) % count;
+            ChangeCharacter(newPlayer);
+        }
+
+        public int GetX()
+        {
+            return player.X;
+        }
+
+        public int GetY()
+        {
+            return player.Y;
+        }
+
+        public void ChangePosition(int x, int y)
+        {
+            player.X = x;
+            player.Y = y;
+
+            Graphics g = CreateGraphics();
+            BufferedGraphicsContext doubleBuffer = BufferedGraphicsManager.Current;
+            BufferedGraphics buffer = doubleBuffer.Allocate(g, ClientRectangle);
+            buffer.Graphics.Clear(Color.White);
+            player.drawPlayer(buffer);
+            buffer.Render(g);
         }
     }
 }

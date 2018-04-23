@@ -43,6 +43,8 @@
             this.cmnuRightClickChangePlayerBomb = new System.Windows.Forms.ToolStripMenuItem();
             this.cmnuRightClickChangePlayerPirate = new System.Windows.Forms.ToolStripMenuItem();
             this.cmnuRightClickChangePlayerGirl = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmnuRightClickChangePlayerMan = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmnuRightClickChangePlayerRockman = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.cmnuRightClickExit = new System.Windows.Forms.ToolStripMenuItem();
             this.cmnuRightClick.SuspendLayout();
@@ -71,6 +73,7 @@
             // 
             // cmnuRightClickPause
             // 
+            this.cmnuRightClickPause.Image = global::MyProgram.Properties.Resources.icon_pause;
             this.cmnuRightClickPause.Name = "cmnuRightClickPause";
             this.cmnuRightClickPause.ShortcutKeyDisplayString = "P";
             this.cmnuRightClickPause.Size = new System.Drawing.Size(184, 22);
@@ -79,6 +82,7 @@
             // 
             // cmnuRightClickResume
             // 
+            this.cmnuRightClickResume.Image = global::MyProgram.Properties.Resources.icon_resume;
             this.cmnuRightClickResume.Name = "cmnuRightClickResume";
             this.cmnuRightClickResume.ShortcutKeyDisplayString = "S";
             this.cmnuRightClickResume.Size = new System.Drawing.Size(184, 22);
@@ -92,6 +96,7 @@
             // 
             // cmnuRightClickIncSpeed
             // 
+            this.cmnuRightClickIncSpeed.Image = global::MyProgram.Properties.Resources.icon_forward;
             this.cmnuRightClickIncSpeed.Name = "cmnuRightClickIncSpeed";
             this.cmnuRightClickIncSpeed.ShortcutKeyDisplayString = "+";
             this.cmnuRightClickIncSpeed.Size = new System.Drawing.Size(184, 22);
@@ -100,6 +105,7 @@
             // 
             // cmnuRightClickDecSpeed
             // 
+            this.cmnuRightClickDecSpeed.Image = global::MyProgram.Properties.Resources.icon_backward;
             this.cmnuRightClickDecSpeed.Name = "cmnuRightClickDecSpeed";
             this.cmnuRightClickDecSpeed.ShortcutKeyDisplayString = "-";
             this.cmnuRightClickDecSpeed.Size = new System.Drawing.Size(184, 22);
@@ -108,6 +114,7 @@
             // 
             // cmnuRightClickZoomIn
             // 
+            this.cmnuRightClickZoomIn.Image = global::MyProgram.Properties.Resources.icon_zoom_in;
             this.cmnuRightClickZoomIn.Name = "cmnuRightClickZoomIn";
             this.cmnuRightClickZoomIn.ShortcutKeyDisplayString = "[";
             this.cmnuRightClickZoomIn.Size = new System.Drawing.Size(184, 22);
@@ -116,6 +123,7 @@
             // 
             // cmnuRightClickZoomOut
             // 
+            this.cmnuRightClickZoomOut.Image = global::MyProgram.Properties.Resources.icon_zoom_out;
             this.cmnuRightClickZoomOut.Name = "cmnuRightClickZoomOut";
             this.cmnuRightClickZoomOut.ShortcutKeyDisplayString = "]";
             this.cmnuRightClickZoomOut.Size = new System.Drawing.Size(184, 22);
@@ -132,7 +140,10 @@
             this.cmnuRightClickChangePlayer.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.cmnuRightClickChangePlayerBomb,
             this.cmnuRightClickChangePlayerPirate,
-            this.cmnuRightClickChangePlayerGirl});
+            this.cmnuRightClickChangePlayerGirl,
+            this.cmnuRightClickChangePlayerMan,
+            this.cmnuRightClickChangePlayerRockman});
+            this.cmnuRightClickChangePlayer.Image = global::MyProgram.Properties.Resources.icon_paint;
             this.cmnuRightClickChangePlayer.Name = "cmnuRightClickChangePlayer";
             this.cmnuRightClickChangePlayer.ShortcutKeyDisplayString = "B";
             this.cmnuRightClickChangePlayer.Size = new System.Drawing.Size(184, 22);
@@ -140,6 +151,7 @@
             // 
             // cmnuRightClickChangePlayerBomb
             // 
+            this.cmnuRightClickChangePlayerBomb.Image = global::MyProgram.Properties.Resources.icon_bomb;
             this.cmnuRightClickChangePlayerBomb.Name = "cmnuRightClickChangePlayerBomb";
             this.cmnuRightClickChangePlayerBomb.Size = new System.Drawing.Size(180, 22);
             this.cmnuRightClickChangePlayerBomb.Text = "&Bomb Man";
@@ -147,6 +159,7 @@
             // 
             // cmnuRightClickChangePlayerPirate
             // 
+            this.cmnuRightClickChangePlayerPirate.Image = global::MyProgram.Properties.Resources.icon_pirate;
             this.cmnuRightClickChangePlayerPirate.Name = "cmnuRightClickChangePlayerPirate";
             this.cmnuRightClickChangePlayerPirate.Size = new System.Drawing.Size(180, 22);
             this.cmnuRightClickChangePlayerPirate.Text = "&Pirate";
@@ -154,10 +167,27 @@
             // 
             // cmnuRightClickChangePlayerGirl
             // 
+            this.cmnuRightClickChangePlayerGirl.Image = global::MyProgram.Properties.Resources.icon_girl;
             this.cmnuRightClickChangePlayerGirl.Name = "cmnuRightClickChangePlayerGirl";
             this.cmnuRightClickChangePlayerGirl.Size = new System.Drawing.Size(180, 22);
             this.cmnuRightClickChangePlayerGirl.Text = "&Girl";
             this.cmnuRightClickChangePlayerGirl.Click += new System.EventHandler(this.cmnuRightClickChangePlayerGirl_Click);
+            // 
+            // cmnuRightClickChangePlayerMan
+            // 
+            this.cmnuRightClickChangePlayerMan.Image = global::MyProgram.Properties.Resources.icon_man;
+            this.cmnuRightClickChangePlayerMan.Name = "cmnuRightClickChangePlayerMan";
+            this.cmnuRightClickChangePlayerMan.Size = new System.Drawing.Size(180, 22);
+            this.cmnuRightClickChangePlayerMan.Text = "&Man";
+            this.cmnuRightClickChangePlayerMan.Click += new System.EventHandler(this.cmnuRightClickChangePlayerMan_Click);
+            // 
+            // cmnuRightClickChangePlayerRockman
+            // 
+            this.cmnuRightClickChangePlayerRockman.Image = global::MyProgram.Properties.Resources.icon_rockman;
+            this.cmnuRightClickChangePlayerRockman.Name = "cmnuRightClickChangePlayerRockman";
+            this.cmnuRightClickChangePlayerRockman.Size = new System.Drawing.Size(180, 22);
+            this.cmnuRightClickChangePlayerRockman.Text = "&Rockman";
+            this.cmnuRightClickChangePlayerRockman.Click += new System.EventHandler(this.cmnuRightClickChangePlayerRockman_Click);
             // 
             // toolStripSeparator3
             // 
@@ -166,6 +196,7 @@
             // 
             // cmnuRightClickExit
             // 
+            this.cmnuRightClickExit.Image = global::MyProgram.Properties.Resources.icon_stop;
             this.cmnuRightClickExit.Name = "cmnuRightClickExit";
             this.cmnuRightClickExit.ShortcutKeyDisplayString = "ESC";
             this.cmnuRightClickExit.Size = new System.Drawing.Size(184, 22);
@@ -201,5 +232,7 @@
         private System.Windows.Forms.ToolStripMenuItem cmnuRightClickChangePlayerGirl;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripMenuItem cmnuRightClickExit;
+        private System.Windows.Forms.ToolStripMenuItem cmnuRightClickChangePlayerMan;
+        private System.Windows.Forms.ToolStripMenuItem cmnuRightClickChangePlayerRockman;
     }
 }

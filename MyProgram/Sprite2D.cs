@@ -15,7 +15,7 @@ namespace MyProgram
 
     public enum Player
     {
-        Bombman, Pirate, Girl
+        Bombman, Pirate, Girl, Man, Rockman
     }
 
     public class Sprite2D
@@ -47,10 +47,14 @@ namespace MyProgram
         // nguồn của ảnh
         private Bitmap bm;
         private int maxFramePerRow;
+        Player typePlayer;
 
         public StateAction Direction { get => direction; set => direction = value; }
         public StateAction Action { get => action; set => action = value; }
         public int CurScale { get => curScale; set => curScale = value; }
+        public int X { get => x; set => x = value; }
+        public int Y { get => y; set => y = value; }
+        public Player TypePlayer { get => typePlayer;}
 
         public Sprite2D()
         {
@@ -60,7 +64,7 @@ namespace MyProgram
             indexColumn = indexRow = 0;
             direction = StateAction.Down;
             action = StateAction.Standing;
-            setPlayer(Player.Bombman);
+            setPlayer(typePlayer);
         }
 
         public Sprite2D(Player playerType)
@@ -86,6 +90,7 @@ namespace MyProgram
                         curScale = 1;
                         bm = new Bitmap(Properties.Resources.bombman);
                         maxFramePerRow = 5;
+                        typePlayer = Player.Bombman;
                         break;
                     }
                 case Player.Pirate:
@@ -96,6 +101,7 @@ namespace MyProgram
                         curScale = 1;
                         bm = new Bitmap(Properties.Resources.pirate);
                         maxFramePerRow = 5;
+                        typePlayer = Player.Pirate;
                         break;
                     }
                 case Player.Girl:
@@ -106,8 +112,29 @@ namespace MyProgram
                         curScale = 1;
                         bm = new Bitmap(Properties.Resources.girl);
                         maxFramePerRow = 4;
+                        typePlayer = Player.Girl;
                         break;
                     }
+                case Player.Man:
+                    width = 128;
+                    height = 128;
+                    defaultScale = 1;
+                    curScale = 1;
+                    bm = new Bitmap(Properties.Resources.man);
+                    maxFramePerRow = 4;
+                    typePlayer = Player.Man;
+                    break;
+                case Player.Rockman:
+                    width = 50;
+                    height = 100;
+                    defaultScale = 1;
+                    curScale = 1;
+                    bm = new Bitmap(Properties.Resources.rockman);
+                    maxFramePerRow = 5;
+                    typePlayer = Player.Rockman;
+                    break;
+                default:
+                    break;
             }
         }
 

@@ -116,7 +116,7 @@ namespace MyProgram
                         break;
                     }
                 case Player.Man:
-                    width = 128;
+                    width = 72;
                     height = 128;
                     defaultScale = 1;
                     curScale = 1;

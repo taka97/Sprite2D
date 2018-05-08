@@ -56,9 +56,61 @@ namespace MyProgram
             isMove = false;
         }
 
+        private void cmnuRightClickPause_Click(object sender, System.EventArgs e) => spriteControl.Pause();
+
+        private void cmnuRightClickResume_Click(object sender, System.EventArgs e) => spriteControl.Resume();
+
+        private void cmnuRightClickIncSpeed_Click(object sender, System.EventArgs e) => spriteControl.IncSpeed();
+
+        private void cmnuRightClickDecSpeed_Click(object sender, System.EventArgs e) => spriteControl.DecSpeed();
+
+        private void cmnuRightClickZoomIn_Click(object sender, System.EventArgs e)
+        {
+            spriteControl.isChange = false;
+            spriteControl.ZoomIn();
+            spriteControl.isChange = false;
+        }
+
+        private void cmnuRightClickZoomOut_Click(object sender, System.EventArgs e)
+        {
+            spriteControl.isChange = false;
+            spriteControl.ZoomOut();
+            spriteControl.isChange = false;
+        }
+
+        private void cmnuRightClickChangePlayerBomb_Click(object sender, System.EventArgs e)
+        {
+            spriteControl.setPlayer(Player.Bombman);
+        }
+
+        private void cmnuRightClickChangePlayerPirate_Click(object sender, System.EventArgs e)
+        {
+            spriteControl.setPlayer(Player.Pirate);
+        }
+
+        private void cmnuRightClickChangePlayerGirl_Click(object sender, System.EventArgs e)
+        {
+            spriteControl.setPlayer(Player.Girl);
+        }
+
+        private void cmnuRightClickChangePlayerMan_Click(object sender, System.EventArgs e)
+        {
+            spriteControl.setPlayer(Player.Man);
+        }
+
+        private void cmnuRightClickChangePlayerRockman_Click(object sender, System.EventArgs e)
+        {
+            spriteControl.setPlayer(Player.Rockman);
+        }
+
+        private void cmnuRightClickExit_Click(object sender, System.EventArgs e)
+        {
+            Application.Exit();
+        }
+
         private void spriteControl_MouseMove(object sender, MouseEventArgs e)
         {
-            if(isMove)
+            if (isMove)
             {
                 spriteControl.ChangePosition(e.X - dx, e.Y - dy);
             }

@@ -23,7 +23,7 @@ namespace MyProgram
             tmrTick.Enabled = true;
         }
 
-        private Boolean isChange = false;
+        public Boolean isChange = false;
 
         private void tmrTick_Tick(object sender, EventArgs e)
         {
@@ -168,27 +168,27 @@ namespace MyProgram
             isChange = false;
         }
 
-        private void Pause()
+        public void Pause()
         {
             stateGame = StateGame.Pause;
         }
 
-        private void Resume()
+        public void Resume()
         {
             stateGame = StateGame.Idle;
         }
 
-        private void IncSpeed()
+        public void IncSpeed()
         {
             tmrTick.Interval -= 10;
         }
 
-        private void DecSpeed()
+        public void DecSpeed()
         {
             tmrTick.Interval += 10;
         }
 
-        private void ZoomIn()
+        public void ZoomIn()
         {
             if (!isChange)
             {
@@ -200,7 +200,7 @@ namespace MyProgram
                 isChange = false;
         }
 
-        private void ZoomOut()
+        public void ZoomOut()
         {
             if (!isChange)
             {
@@ -212,12 +212,12 @@ namespace MyProgram
                 isChange = false;
         }
 
-        private void ChangeCharacter(int code)
+        public void ChangeCharacter(int code)
         {
             player.setPlayer((Player)code);
         }
 
-        private void AutoChangeCharacter()
+        public void AutoChangeCharacter()
         {
             int count = Enum.GetNames(typeof(Player)).Length;
             int newPlayer = ((int)player.TypePlayer + 1) % count;
@@ -245,6 +245,27 @@ namespace MyProgram
             buffer.Graphics.Clear(Color.White);
             player.drawPlayer(buffer);
             buffer.Render(g);
+        }
+
+        public Icon Icon
+        {
+            get
+            {
+                switch (player.TypePlayer)
+                {
+                    case Player.Bombman: return Properties.Resources.icon_bomb;
+                    case Player.Pirate: return Properties.Resources.icon_pirate;
+                    case Player.Girl: return Properties.Resources.icon_girl;
+                    case Player.Man: return Properties.Resources.icon_man;
+                    case Player.Rockman: return Properties.Resources.icon_rockman;
+                    default: return null;
+                }
+            }
+        }
+
+        public void setPlayer(Player _player)
+        {
+            player.setPlayer(_player);
         }
     }
 }
